@@ -19,11 +19,11 @@
     <!-- NAVBAR -->
     <header class="navbar">
 
-        <div class="logo">
-            <h1>Lumina</h1>
-            <span>by Joud</span>
-        </div>
-
+         <div class="logo">
+               <img src="logo.png" alt="Lumina logo" class="logo-img">
+               <h1>Lumina</h1>
+               <span>by Joud</span>
+         </div>
         <nav>
             <a href="#home">Home</a>
             <a href="#shop">Shop</a>
@@ -67,6 +67,18 @@
     <div class="toast" id="toast"></div>
 
 
+    <!-- VARIANT (COLOR) MODAL -->
+    <div class="variant-overlay" id="variantOverlay"></div>
+
+    <div class="variant-modal" id="variantModal">
+        <div class="variant-modal-head">
+            <h3 id="variantModalTitle">اختاري اللون</h3>
+            <button class="cart-close" id="variantClose" aria-label="إغلاق">✕</button>
+        </div>
+        <div class="variant-grid" id="variantGrid"></div>
+    </div>
+
+
     <!-- HERO -->
     <section id="home" class="hero">
 
@@ -93,8 +105,9 @@
 
         <div class="hero-decoration">
 
-            <div class="circle"></div>
-
+            <div class="circle">
+                <img src="logo.png" alt="Lumina logo">
+            </div>>
             <div class="flower">✿</div>
 
             <div class="heart">♡</div>
@@ -118,98 +131,143 @@
 
         <div class="products">
 
+    <!-- PRODUCT 1: RAPUNZEL — LIGHT OPTION -->
+    <!-- PRODUCT 1: RAPUNZEL LAMP SMALL + HOLDER -->
+<div class="product-card">
 
-            <!-- PRODUCT 1 -->
-            <div class="product-card">
+    <div class="product-image">
+        <img src="IMG_7744.jpg" alt="Rapunzel Lamp Small + Holder Accessories" class="main-img">
+        <span class="favorite">♡</span>
+    </div>
 
-                <div class="product-image">
-
-                    <img src="IMG_7744.jpg" alt="Rupunzel Flower">
-
-                    <span class="favorite">♡</span>
-
-                </div>
-
-                <div class="product-info">
-
-                    <p class="category">Handmade</p>
-
-                    <h3>Rupunzel Flower</h3>
-
-                    <div class="product-bottom">
-
-                        <span class="price">500 EGP</span>
-
-                        <button class="add-to-cart" data-name="Rupunzel Flower" data-price="500" data-img="IMG_7744.jpg" aria-label="Add Rupunzel Flower to cart">+</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 2 -->
-            <div class="product-card">
-
-                <div class="product-image">
-
-                    <img src="IMG_7579.jpg" alt="Lily Flower">
-
-                    <span class="favorite">♡</span>
-
-                </div>
-
-                <div class="product-info">
-
-                    <p class="category">Handmade</p>
-
-                    <h3>Lily Flower</h3>
-
-                    <div class="product-bottom">
-
-                        <span class="price">50 EGP</span>
-
-                        <button class="add-to-cart" data-name="Lily Flower" data-price="50" data-img="IMG_7579.jpg" aria-label="Add Lily Flower to cart">+</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- PRODUCT 3 -->
-            <div class="product-card">
-
-                <div class="product-image">
-
-                    <img src="lily.jpg" alt="Lily Flower">
-
-                    <span class="favorite">♡</span>
-
-                </div>
-
-                <div class="product-info">
-
-                    <p class="category">Handmade</p>
-
-                    <h3>Lily Flower</h3>
-
-                    <div class="product-bottom">
-
-                        <span class="price">50 EGP</span>
-
-                        <button class="add-to-cart" data-name="Lily Flower" data-price="50" data-img="lily.jpg" aria-label="Add Lily Flower to cart">+</button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
+    <div class="product-info">
+        <p class="category">Handmade</p>
+        <h3>Rapunzel Lamp Small + Holder</h3>
+        <div class="product-bottom">
+            <span class="price">350 EGP</span>
+            <button class="add-to-cart" data-name="Rapunzel Lamp Small + Holder Accessories" data-price="350" data-img="IMG_7744.jpg" aria-label="Add Rapunzel Lamp Small + Holder to cart">+</button>
         </div>
+    </div>
+
+</div>
+
+
+<!-- PRODUCT 1B: RAPUNZEL LAMP (ONLY) -->
+<div class="product-card">
+
+    <div class="product-image">
+        <img src="IMG_8201.jpg" alt="Rapunzel Lamp" class="main-img">
+        <span class="favorite">♡</span>
+    </div>
+
+    <div class="product-info">
+        <p class="category">Handmade</p>
+        <h3>Rapunzel Lamp</h3>
+        <div class="product-bottom">
+            <span class="price">250 EGP</span>
+            <button class="add-to-cart" data-name="Rapunzel Lamp" data-price="250" data-img="IMG_8201.jpg" aria-label="Add Rapunzel Lamp to cart">+</button>
+        </div>
+    </div>
+
+</div>
+
+
+    <!-- PRODUCT 2: LILY FLOWER — COLOR CHOICE -->
+    <div class="product-card" data-variants='[
+        {"name":"Lily Flower","color":"yellow","price":50,"img":"yello lily.jpg"},
+        {"name":"Lily Flower","color":"purple","price":50,"img":"purple lily 2.jpg"},
+        {"name":"Lily Flower","color":"Pink","price":50,"img":"pink lily.jpg"}
+    ]'>
+
+        <div class="product-image">
+            <img src="IMG_8173.jpg" alt="Lily Flower" class="main-img">
+            <span class="favorite">♡</span>
+            <span class="view-colors">اختاري اللون</span>
+        </div>
+
+        <div class="product-info">
+            <p class="category">Handmade</p>
+            <h3>Lily Flower</h3>
+            <div class="product-bottom">
+                <span class="price">50 EGP</span>
+                <button class="add-to-cart" aria-label="Choose Lily Flower color">+</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCT 3: POPPY FLOWER (2) — COLOR CHOICE -->
+    <div class="product-card" data-variants='[
+        {"name":"Poppy Flower","color":"pink","price":50,"img":"pink poppy.jpg"},
+        {"name":"Poppy Flower","color":"Yellow","price":50,"img":"yellow poppy.jpg"},
+        {"name":"Poppy Flower","color":"Purple","price":50,"img":"purple poppy.jpg"}
+    ]'>
+
+        <div class="product-image">
+            <img src="IMG_8177.jpg" alt="Poppy Flower" class="main-img">
+            <span class="favorite">♡</span>
+            <span class="view-colors">اختاري اللون</span>
+        </div>
+
+        <div class="product-info">
+            <p class="category">Handmade</p>
+            <h3> Poppy flower </h3>
+            <div class="product-bottom">
+                <span class="price">50 EGP</span>
+                <button class="add-to-cart" aria-label="Choose Poppy Flower color">+</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCT 4:Tulip flower 50 (NEW) — COLOR CHOICE — placeholder, عدّلي الاسم/السعر/الصور -->
+    <div class="product-card" data-variants='[
+        {"name":"Tulip Flower","color":"purple","price":50,"img":"purple tulip.jpg"},
+        {"name":"Tulip Flower","color":"Pink","price":50,"img":"pink tulip.jpg"},
+        {"name":"Tulip Flower","color":"yellow","price":50,"img":"yellow tulip.jpg"}
+    ]'>
+
+        <div class="product-image">
+            <img src="pink tulip.jpg" alt="Tulip Flower" class="main-img">
+            <span class="favorite">♡</span>
+            <span class="view-colors">اختاري اللون</span>
+        </div>
+
+        <div class="product-info">
+            <p class="category">Handmade</p>
+            <h3>Tulip Flower</h3>
+            <div class="product-bottom">
+                <span class="price">50 EGP</span>
+                <button class="add-to-cart" aria-label="Choose Tulip Flower color">+</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCT 5: Lotus lamp (NEW) — NO CHOICE — placeholder، عدّلي الاسم/السعر/الصورة -->
+    <div class="product-card">
+
+        <div class="product-image">
+            <img src="lotus lamp.jpg" alt="Lotus Lamp" class="main-img">
+            <span class="favorite">♡</span>
+        </div>
+
+        <div class="product-info">
+            <p class="category">Handmade</p>
+            <h3>Lotus Lamp</h3>
+            <div class="product-bottom">
+                <span class="price">150 EGP</span>
+                <button class="add-to-cart" data-name="Lotus Lamp" data-price=
+                "150" data-img="lotus-lamp.jpg" aria-label="Add Lotus Lamp to cart">+</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
 
     </section>
 
@@ -229,6 +287,7 @@
             <p>
                 Lumina is a handmade brand created by Joud,
                 turning little ideas into beautiful pieces.
+             Lumina's story was the biggest gift I got and now I want to make it last forever.
             </p>
 
         </div>
@@ -237,16 +296,39 @@
 
 
     <!-- CONTACT -->
-    <section id="contact" class="contact">
+<section id="contact" class="contact">
 
-        <p class="small-title">Let's connect</p>
+    <p class="small-title">Let's connect</p>
 
-        <h2>Stay in touch with Lumina</h2>
+    <h2>Stay in touch with Lumina</h2>
 
-        <p>Instagram: <a href="https://www.instagram.com/lumina__blooms?stkn=bGZ4cmNnb3gxc2Q4&utm_source=qr" target="_blank" rel="noopener noreferrer">@lumina__blooms</a></p>
+    <div class="social-icons">
 
-    </section>
+        <a href="https://www.instagram.com/lumina__blooms?stkn=bGZ4cmNnb3gxc2Q4&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle>
+            </svg>
+        </a>
 
+        <a href="https://wa.me/201003920301" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3z"></path>
+                <path d="M8.5 8.7c.2-.5.4-.5.6-.5h.5c.2 0 .4 0 .5.4.2.5.6 1.6.7 1.7.1.1.1.3 0 .5-.1.2-.2.3-.3.4-.1.2-.3.3-.1.6.2.4.9 1.4 1.9 1.9.3.2.5.1.6-.1.2-.2.5-.6.7-.8.1-.2.3-.2.5-.1.4.2 1.5.7 1.8.8.2.1.4.2.4.3.1.3.1.7-.1 1.1-.2.4-1 .9-1.4 1-.4.1-.8.1-1.3-.1-1.9-.7-3.6-2.2-4.6-3.9-.3-.5-.6-1-.6-1.6 0-.5.2-.9.4-1.2z" fill="currentColor" stroke="none"></path>
+            </svg>
+        </a>
+        
+        <a href="https://www.tiktok.com/@lumina__blooms?_r=1&_t=ZS-99pniaChyVs" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M16.5 3c.4 2.2 1.9 3.7 4 4v3c-1.4 0-2.8-.4-4-1.2v6.1c0 3.3-2.7 6-6 6-1.7 0-3.2-.7-4.3-1.8-1.1-1.1-1.7-2.6-1.7-4.2 0-3.3 2.7-6 6-6 .3 0 .6 0 .9.1v3.1c-.3-.1-.6-.2-.9-.2-1.5 0-2.8 1.3-2.8 2.9 0 .8.3 1.5.9 2 .5.5 1.2.9 1.9.9 1.6 0 2.9-1.3 2.9-2.9V3h3.1z"></path>
+            </svg>
+        </a>
+    </div>
+
+    <p class="contact-handle">@lumina__blooms</p>
+
+</section> 
 
     <!-- FOOTER -->
     <footer>

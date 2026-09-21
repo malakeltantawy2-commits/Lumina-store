@@ -1,17 +1,12 @@
-/* =========================================================
-   LUMINA — cart logic
-   Clicking "+" on any product adds it to the purchases panel.
-   ========================================================= */
-
 (function () {
     "use strict";
 
     const STORAGE_KEY = "lumina-cart";
 
-    /* Change this to your real Instagram handle (no @) */
+    /* اسم حسابك على إنستجرام */
     const INSTAGRAM_USERNAME = "lumina__blooms";
 
-    /* Change this to your real WhatsApp number, country code first, no + or spaces (e.g. "201001234567") */
+    /* رقم الواتساب بصيغة دولية، بدون + أو مسافات */
     const WHATSAPP_NUMBER = "201003920301";
 
     const cartToggle = document.getElementById("cartToggle");
@@ -22,10 +17,15 @@
     const cartEmptyEl = document.getElementById("cartEmpty");
     const cartCountEl = document.getElementById("cartCount");
     const cartTotalEl = document.getElementById("cartTotal");
-    const addButtons = document.querySelectorAll(".add-to-cart");
     const cartCheckout = document.getElementById("cartCheckout");
     const cartCheckoutWhatsapp = document.getElementById("cartCheckoutWhatsapp");
     const toastEl = document.getElementById("toast");
+
+    const variantOverlay = document.getElementById("variantOverlay");
+    const variantModal = document.getElementById("variantModal");
+    const variantClose = document.getElementById("variantClose");
+    const variantGrid = document.getElementById("variantGrid");
+    const variantModalTitle = document.getElementById("variantModalTitle");
 
     function loadCart() {
         try {
@@ -161,12 +161,57 @@
         window.open(url, "_blank", "noopener");
     }
 
-    addButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            const { name, price, img } = button.dataset;
-            addToCart(name, Number(price), img);
+    /* ---------- اختيار اللون ---------- */
+
+   function openVariantModal(card) {
+    const variants = JSON.parse(card.dataset.variants);
+    const label = card.dataset.variantLabel || "اللون";
+    variantModalTitle.textContent = `اختاري ${label} ${variants[0].name}`;
+    variantGrid.innerHTML = "";
+
+    variants.forEach((variant) => {
+        const option = document.createElement("div");
+        option.className = "variant-option";
+        option.innerHTML = `
+            <img src="${variant.img}" alt="${variant.name} - ${variant.color}">
+            <span>${variant.color}</span>
+        `;
+        option.addEventListener("click", () => {
+            addToCart(`${variant.name} - ${variant.color}`, variant.price, variant.img);
+            const mainImg = card.querySelector(".main-img");
+            if (mainImg) mainImg.src = variant.img;
+            closeVariantModal();
         });
+        variantGrid.appendChild(option);
     });
+
+    variantModal.classList.add("is-open");
+    variantOverlay.classList.add("is-open");
+}
+
+    function closeVariantModal() {
+        variantModal.classList.remove("is-open");
+        variantOverlay.classList.remove("is-open");
+    }
+
+    document.querySelectorAll(".product-card").forEach((card) => {
+        const image = card.querySelector(".product-image");
+        const addButton = card.querySelector(".add-to-cart");
+        const hasVariants = card.hasAttribute("data-variants");
+
+        if (hasVariants) {
+            image.addEventListener("click", () => openVariantModal(card));
+            addButton.addEventListener("click", () => openVariantModal(card));
+        } else {
+            addButton.addEventListener("click", () => {
+                const { name, price, img } = addButton.dataset;
+                addToCart(name, Number(price), img);
+            });
+        }
+    });
+
+    variantClose.addEventListener("click", closeVariantModal);
+    variantOverlay.addEventListener("click", closeVariantModal);
 
     cartItemsEl.addEventListener("click", (event) => {
         const target = event.target.closest("button[data-action]");
@@ -194,7 +239,10 @@
     cartCheckoutWhatsapp.addEventListener("click", sendOrderOnWhatsapp);
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") closeCart();
+        if (event.key === "Escape") {
+            closeCart();
+            closeVariantModal();
+        }
     });
 
     render();
